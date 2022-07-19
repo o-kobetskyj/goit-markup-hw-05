@@ -569,8 +569,11 @@ body {
   pointer-events: none;
 }
 .modal-btn {
-  margin-left: auto;
-  box-sizing: border-box;
+  position: absolute;
+  /* box-sizing: border-box; */
+  padding: 0;
+  top: 8px;
+  right: 8px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
