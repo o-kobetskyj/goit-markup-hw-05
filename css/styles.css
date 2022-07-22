@@ -9,6 +9,8 @@
   --white-txt-cl: #ffffff;
   --footer-contacts-txt-cl: rgba(255, 255, 255, 0.6);
   /* Bg and other colors */
+  --portfolio-overlay-bg-cl: rgba(33, 150, 243, 0.9);
+  --backdrop-bg-cl: rgba(0, 0, 0, 0.2);
   --footer-social-bg-cl: rgba(255, 255, 255, 0.1);
   --client-icon-cl: #afb1b8;
   --shadow-btn-box-cl: rgba(0, 0, 0, 0.15);
@@ -31,6 +33,8 @@
   --items-about-us: 3;
   --items-command: 4;
   --items-portfolio: 3;
+  /* Animation */
+  --animation-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Reset styles */
@@ -156,7 +160,7 @@ body {
   letter-spacing: 0.02em;
   padding-top: 32px;
   padding-bottom: 32px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--animation-base);
 }
 .main-nav-link:hover,
 .main-nav-link:focus,
@@ -191,7 +195,7 @@ body {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--animation-base);
 }
 .contacts-icon {
   fill: currentColor;
@@ -247,7 +251,7 @@ body {
   border-radius: 4px;
   border: var(--btn-border-cl);
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--animation-base);
 }
 .btn-hero:hover,
 .btn-hero:focus {
@@ -298,6 +302,28 @@ body {
     (100% - var(--indent-main) * (var(--items-about-us) - 1)) /
       var(--items-about-us)
   );
+}
+
+.about-us-card {
+  position: relative;
+}
+.overlay-about {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 370px;
+  height: 70px;
+  background-color: var(--gradient-linear-bg);
+}
+.overlay-about-text {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--white-txt-cl);
 }
 
 /* Command section */
@@ -352,8 +378,8 @@ body {
   height: 44px;
   background-color: var(--white-txt-cl);
   border-radius: 50%;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--animation-base),
+    color var(--animation-base);
 }
 .social-icon {
   fill: currentColor;
@@ -379,8 +405,7 @@ body {
   border: 1px solid var(--client-icon-cl);
   color: var(--client-icon-cl);
   border-radius: 4px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--animation-base), border var(--animation-base);
 }
 .client-icon {
   fill: currentColor;
@@ -415,8 +440,8 @@ body {
   border-radius: 4px;
   border: var(--btn-border-cl);
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--animation-base),
+    box-shadow var(--animation-base);
 }
 .filter-btn-current {
   background-color: var(--accent-txt-cl);
@@ -437,12 +462,17 @@ body {
 }
 .portfolio-section-link {
   display: block;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--animation-base);
 }
 .portfolio-section-link:hover,
 .portfolio-section-link:focus {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+.portfolio-section-link:hover .portfolio-overlay,
+.portfolio-section-link:focus .portfolio-overlay {
+  transform: translateY(0%);
+  opacity: 1;
 }
 .portfolio-section-wrapper {
   padding-top: 20px;
@@ -453,6 +483,34 @@ body {
   border: 1px solid var(--portfolio-section-wrapper-cl);
   border-top: none;
 }
+/* Portfolio overlay set */
+.overlay-project {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: var(--portfolio-overlay-bg-cl);
+  transform: translateY(100%);
+  transition: transform var(--animation-base);
+  opacity: 0;
+}
+.portfolio-overlay-text {
+  font-size: 18px;
+  line-height: calc(28 / 18);
+  letter-spacing: 0.03em;
+  color: var(--white-txt-cl);
+  padding-left: 24px;
+  padding-right: 24px;
+}
+/*  */
 .subtitle-potfolio {
   font-weight: 700;
   font-size: 18px;
@@ -521,8 +579,8 @@ body {
   background-color: var(--footer-social-bg-cl);
   color: var(--white-txt-cl);
   border-radius: 50%;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--animation-base),
+    color var(--animation-base);
 }
 .join-icon {
   fill: currentColor;
@@ -548,25 +606,31 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--backdrop-bg-cl);
+  opacity: 1;
+  transition: opacity var(--animation-base);
 }
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   width: 528px;
   height: 581px;
-  background: #ffffff;
+  background: var(--white-txt-cl);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--animation-base), opacity var(--animation-base);
 }
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.8);
 }
 .modal-btn {
   position: absolute;
@@ -579,7 +643,7 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--white-txt-cl);
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
