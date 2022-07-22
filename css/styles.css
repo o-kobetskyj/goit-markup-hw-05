@@ -9,14 +9,11 @@
   --white-txt-cl: #ffffff;
   --footer-contacts-txt-cl: rgba(255, 255, 255, 0.6);
   /* Bg and other colors */
+  --border-modal-btn-cl: rgba(0, 0, 0, 0.1);
   --portfolio-overlay-bg-cl: rgba(33, 150, 243, 0.9);
   --backdrop-bg-cl: rgba(0, 0, 0, 0.2);
   --footer-social-bg-cl: rgba(255, 255, 255, 0.1);
   --client-icon-cl: #afb1b8;
-  --shadow-btn-box-cl: rgba(0, 0, 0, 0.15);
-  --shadow-command-a-cl: rgba(0, 0, 0, 0.12);
-  --shadow-command-b-cl: rgba(0, 0, 0, 0.14);
-  --shadow-command-c-cl: rgba(0, 0, 0, 0.2);
   --gradient-linear-bg: rgba(47, 48, 58, 0.4);
   --dark-bg-cl: #2f303a;
   --light-bg-cl: #f5f4fa;
@@ -247,7 +244,7 @@ body {
   line-height: calc(30 / 16);
   color: var(--white-txt-cl);
   background-color: var(--accent-txt-cl);
-  box-shadow: 0px 4px 4px var(--shadow-btn-box-cl);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: var(--btn-border-cl);
   cursor: pointer;
@@ -340,9 +337,8 @@ body {
   padding-bottom: 30px;
   padding-left: 5px;
   background: var(--white-txt-cl);
-  box-shadow: 0px 1px 3px var(--shadow-command-a-cl),
-    0px 1px 1px var(--shadow-command-b-cl),
-    0px 2px 1px var(--shadow-command-c-cl);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
 }
 .command-section {
@@ -643,6 +639,6 @@ body {
   height: 30px;
   border-radius: 50%;
   background: var(--white-txt-cl);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-modal-btn-cl);
   cursor: pointer;
 }
